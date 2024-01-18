@@ -8,8 +8,8 @@ public class KeyValueSwapper {
         Map<Integer, String> source=new HashMap<>();
         for (Map.Entry<Integer, String> entry : sourceMap.entrySet()) {
             boolean state=false;
-            for (int i = 0; i < sourceMap.values().size(); i++) {
-                if(entry.getValue()==sourceMap.values().toArray()[i]){
+            for (int i = 0; i < source.values().size(); i++) {
+                if(entry.getValue()==source.values().toArray()[i]){
                     state=true;
                     break;
                 }
