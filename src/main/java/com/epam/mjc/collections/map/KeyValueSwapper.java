@@ -7,7 +7,16 @@ public class KeyValueSwapper {
         Map<String,Integer> map=new HashMap<>();
         Map<Integer, String> source=new HashMap<>();
         for (Map.Entry<Integer, String> entry : sourceMap.entrySet()) {
-            source.put(entry.getKey(),entry.getValue());
+            boolean state=false;
+            for (int i = 0; i < sourceMap.values().size(); i++) {
+                if(entry.getValue()==sourceMap.values().toArray()[i]){
+                    state=true;
+                    break;
+                }
+            }
+            if (!state){
+                source.put(entry.getKey(),entry.getValue());
+            }
         }
         for (Map.Entry<Integer, String> entry : source.entrySet()) {
             map.put(entry.getValue(),entry.getKey());
