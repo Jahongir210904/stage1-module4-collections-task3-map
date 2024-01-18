@@ -5,56 +5,27 @@ import java.util.TreeMap;
 
 public class WordRepetitionMapCreator {
     public Map<String, Integer> createWordRepetitionMap(String sentence) {
-        Map<String,Integer> map=new HashMap<>();
-        while (sentence!=""){
-            boolean state=false;
-           int index=sentence.indexOf(' ');
-           if(index<sentence.indexOf('.') && index!=-1){
-               if (index<sentence.indexOf(',') && sentence.indexOf(',')!=-1){
+        int index=0;
+        Map<String,Integer>map=new HashMap<>();
+        String str="";
+        for (int i = 0; i < sentence.length(); i++) {
+            if (sentence.charAt(i)==' ' || sentence.charAt(i)==',' || sentence.charAt(i)=='.'){
+                if(str==""){
 
-               }else {
-                   if (sentence.indexOf(',')==-1){
-
-                   }else {
-                       index = sentence.indexOf(',');
-                   }
-               }
-           }
-           else{
-               index=sentence.indexOf('.');
-               if(index<sentence.indexOf(',')&&sentence.indexOf(',')!=-1){
-
-               }else {
-                   if (sentence.indexOf(',')==-1){
-
-                   }else {
-                       index = sentence.indexOf(',');
-                   }
-               }
-           }
-            if (index==0){
-                sentence=sentence.substring(1);
-            }else {
-                String word;
-                if (index != -1) {
-                    word = sentence.substring(0, index).toLowerCase();
-                    sentence = sentence.substring(index + 1);
                 } else {
-                    word = sentence.toLowerCase();
-                    sentence = "";
-                }
-                for (String key : map.keySet()) {
-                    if (key.equals(word)) {
-                        state = true;
-                        map.put(key, map.get(key) + 1);
+                    if((map.get(str.toLowerCase()))==null){
+                        map.put(str.toLowerCase(),1);
+                    }else {
+                        map.put(str.toLowerCase(),map.get(str.toLowerCase())+1);
                     }
                 }
-                if (!state) {
-                    map.put(word, 1);
-                }
-                if (index == -1) {
-                    sentence = "";
-                    break;
+                str="";
+            }else {
+                char belgi=sentence.charAt(i);
+                if(belgi==',' || belgi=='.' || belgi==' '){
+
+                }else {
+                    str += belgi;
                 }
             }
         }
