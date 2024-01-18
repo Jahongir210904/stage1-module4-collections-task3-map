@@ -1,10 +1,11 @@
 package com.epam.mjc.collections.map;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class WordRepetitionMapCreator {
     public Map<String, Integer> createWordRepetitionMap(String sentence) {
-        Map<String,Integer> map=new TreeMap<>();
+        Map<String,Integer> map=new HashMap<>();
         while (sentence!=""){
             boolean state=false;
            int index=sentence.indexOf(' ');
